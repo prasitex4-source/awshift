@@ -22,14 +22,14 @@ public class CameraControl : MonoBehaviour
         float deltaX = value.ReadValue<float>() * mouseSensX * Time.deltaTime;
         rotationY += deltaX;
         rotationY = Mathf.Clamp(rotationY, -maxRotationY, maxRotationY);
-        transform.localRotation = Quaternion.Euler(rotationY, 0f, 0f);
+        transform.localRotation = Quaternion.Euler(rotationX, rotationY, 0f);
     }
 
     public void OnLookY(InputAction.CallbackContext value)
     {
-        /*float deltaX = value.ReadValue<float>() * mouseSensX * Time.deltaTime;
-        rotationY += deltaX;
-        rotationY = Mathf.Clamp(rotationY, -maxRotationY, maxRotationY);
-        transform.localRotation = Quaternion.Euler(rotationY, 0f, 0f);*/
+        float deltaY = value.ReadValue<float>() * mouseSensX * Time.deltaTime;
+        rotationY -= deltaY;
+        rotationY = Mathf.Clamp(rotationY, -maxRotationX, maxRotationX);
+        transform.localRotation = Quaternion.Euler(rotationX, rotationY, 0f);
     }
 }
