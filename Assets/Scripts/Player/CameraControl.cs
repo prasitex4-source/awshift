@@ -27,9 +27,9 @@ public class CameraControl : MonoBehaviour
 
     public void OnLookY(InputAction.CallbackContext value)
     {
-        float deltaY = value.ReadValue<float>() * mouseSensX * Time.deltaTime;
-        rotationY -= deltaY;
-        rotationY = Mathf.Clamp(rotationY, -maxRotationX, maxRotationX);
+        float deltaY = value.ReadValue<float>() * mouseSensY * Time.deltaTime;
+        rotationX -= deltaY;
+        rotationX = Mathf.Clamp(rotationX, -maxRotationX, maxRotationX);
         transform.localRotation = Quaternion.Euler(rotationX, rotationY, 0f);
     }
 }
