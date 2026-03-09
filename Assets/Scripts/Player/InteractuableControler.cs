@@ -39,7 +39,7 @@ public class InteractuableControler : MonoBehaviour
         {
             if (currentTargetInter != null)
             {
-                currentTargetInter.Quitar();
+                currentTargetInter.QuitarResalte();
             }
             currentTargetInter = null;
         }

@@ -1,32 +1,25 @@
 using UnityEngine;
 
-public class InteractuableCup : MonoBehaviour, Iinteractuable
+public class InteractuableCup : InteractuableObject
 {
     [SerializeField] private AudioSource audiosource;
     [SerializeField] private AudioClip tazaSound;
     [SerializeField] private GameObject pos;
 
-    public string InteractuableMessage
-    {
-        get { return interactuableMessage; }
-    }
-
-    [SerializeField] string interactuableMessage;
 
 
-
-    public void Interact()
+    public override void Interact()
     {
         audiosource.PlayOneShot(tazaSound);
         transform.position = pos.transform.position;
     }
 
-    public void Resaltar()
+    public override void Resaltar()
     {
         GetComponent<Renderer>().material.SetFloat("_outliner_thickness", 0.02f);
     }
 
-    public void Quitar()
+    public override void QuitarResalte()
     {
         GetComponent<Renderer>().material.SetFloat("_outliner_thickness", 0f);
     }

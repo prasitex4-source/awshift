@@ -17,19 +17,27 @@ public class CameraControl : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+
     public void OnLookX(InputAction.CallbackContext value)
     {
-        float deltaX = value.ReadValue<float>() * mouseSensX * Time.deltaTime;
-        rotationY += deltaX;
-        rotationY = Mathf.Clamp(rotationY, -maxRotationY, maxRotationY);
-        transform.localRotation = Quaternion.Euler(rotationX, rotationY, 0f);
+        if (!GameController.Instance.isCameraFixed)
+        {
+            float deltaX = value.ReadValue<float>() * mouseSensX * Time.deltaTime;
+            rotationY += deltaX;
+            rotationY = Mathf.Clamp(rotationY, -maxRotationY, maxRotationY);
+            transform.localRotation = Quaternion.Euler(rotationX, rotationY, 0f);
+        }
+
     }
 
     public void OnLookY(InputAction.CallbackContext value)
     {
-        float deltaY = value.ReadValue<float>() * mouseSensY * Time.deltaTime;
-        rotationX -= deltaY;
-        rotationX = Mathf.Clamp(rotationX, -maxRotationX, maxRotationX);
-        transform.localRotation = Quaternion.Euler(rotationX, rotationY, 0f);
+        if (!GameController.Instance.isCameraFixed)
+        {
+            float deltaY = value.ReadValue<float>() * mouseSensY * Time.deltaTime;
+            rotationX -= deltaY;
+            rotationX = Mathf.Clamp(rotationX, -maxRotationX, maxRotationX);
+            transform.localRotation = Quaternion.Euler(rotationX, rotationY, 0f);
+        }
     }
 }

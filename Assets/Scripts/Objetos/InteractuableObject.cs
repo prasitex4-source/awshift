@@ -1,7 +1,15 @@
 using UnityEngine;
 
-public class InteractuableObject : MonoBehaviour, Iinteractuable
+public interface Iinteractuable
 {
+    public void Interact();
+    public void Resaltar();
+    public void QuitarResalte();
+    public string InteractuableMessage { get; }
+}
+public abstract class InteractuableObject : MonoBehaviour, Iinteractuable
+{
+
     public string InteractuableMessage
     {
         get { return interactuableMessage; }
@@ -9,18 +17,7 @@ public class InteractuableObject : MonoBehaviour, Iinteractuable
 
     [SerializeField] string interactuableMessage;
 
-    public void Interact()
-    {
-        Destroy(gameObject);
-    }
-
-    public void Resaltar()
-    {
-        GetComponent<Renderer>().material.SetFloat("_outliner_thickness", 0.008f);
-    }
-
-    public void Quitar()
-    {
-        GetComponent<Renderer>().material.SetFloat("_outliner_thickness", 0f);
-    }
+    public abstract void Interact();
+    public abstract void Resaltar();
+    public abstract void QuitarResalte();
 }
