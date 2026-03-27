@@ -64,5 +64,13 @@ public class InteractuableControler : MonoBehaviour
         currentTargetInter.Resaltar();
     }
 
+    /*void LeaveInter()
+    {
+        if (currentTargetInter != null)
+        {
+            currentTargetInter.
+        }
+    }*/
+
 
 }

@@ -1,16 +1,40 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
-public class RadioObject : MonoBehaviour
+public class RadioObject : InteractuableObject
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField] private AudioSource audiosource;
+    [SerializeField] SoundManager soundManager;
+    int song = 0;
+
+
+    public override void Interact()
     {
-        
+
+        if (song == 2)
+        {
+            SoundManager.StopSong();
+            song = 0;
+        }
+
+        else
+        {
+            SoundManager.StopSong();
+            SoundManager.PlaySong(song);
+            Debug.Log(song);
+            song ++;
+        }
+
+
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void Resaltar()
     {
-        
+        GetComponent<Renderer>().material.SetFloat("_outliner_thickness", 0.02f);
+    }
+
+    public override void QuitarResalte()
+    {
+        GetComponent<Renderer>().material.SetFloat("_outliner_thickness", 0f);
     }
 }

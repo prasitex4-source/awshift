@@ -427,8 +427,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 967796b9918854749bfd21141ee91aa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraControl
-  mouseSensX: 100
-  mouseSensY: 100
+  mouseSensX: 50
+  mouseSensY: 50
   maxRotationX: 80
   maxRotationY: 80
 --- !u!1 &782962318
@@ -852,7 +852,7 @@ Transform:
   m_GameObject: {fileID: 927093086}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15.52, y: 0.84, z: -3.28}
+  m_LocalPosition: {x: 16.95, y: 0.84, z: -3.28}
   m_LocalScale: {x: 1, y: 0.55672, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -987,7 +987,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SoundManager
   soundList: []
   songsList:
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 6fc0b17e03f1a6744a581ec08c14a54e, type: 3}
+  - {fileID: 8300000, guid: 18da85f55f2390b42968c2f93c921448, type: 3}
 --- !u!4 &1097951619
 Transform:
   m_ObjectHideFlags: 0
@@ -1872,7 +1873,7 @@ Transform:
   m_GameObject: {fileID: 4316380747174337359}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.03, y: 0, z: 2.08}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2019,6 +2020,8 @@ GameObject:
   - component: {fileID: 828363327969684124}
   - component: {fileID: 978770180391161752}
   - component: {fileID: 4316380747174337360}
+  - component: {fileID: 4316380747174337361}
+  - component: {fileID: 4316380747174337362}
   m_Layer: 0
   m_Name: radio
   m_TagString: Untagged
@@ -2123,6 +2126,42 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &4316380747174337361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4316380747174337359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e871fee99efdc54eb034c1084480f05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RadioObject
+  interactuableMessage: meow
+  audiosource: {fileID: 1097951617}
+  soundManager: {fileID: 1097951618}
+--- !u!65 &4316380747174337362
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4316380747174337359}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.9707599, y: 1.7977251, z: 1.177463}
+  m_Center: {x: 4.993971, y: 1.1660395, z: -1.4060235}
 --- !u!4 &4337349418403007721
 Transform:
   m_ObjectHideFlags: 0
