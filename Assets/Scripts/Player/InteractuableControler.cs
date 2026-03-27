@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 public class InteractuableControler : MonoBehaviour
 {
     [SerializeField] Camera mCamera;
-    [SerializeField] float interactDistance = 5f;
+    [SerializeField] float interactDistance = 10f;
     [SerializeField] TextMeshProUGUI interactText;
 
     Iinteractuable currentTargetInter;

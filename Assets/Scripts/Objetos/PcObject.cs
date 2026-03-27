@@ -20,16 +20,14 @@ public class PcObject : InteractuableObject
     }
 
 
-
+    public override void Resaltar()
+    {
+        GetComponent<Renderer>().material.SetFloat("_outliner_thickness", 10f);
+    }
 
     public override void QuitarResalte()
     {
-
-    }
-
-    public override void Resaltar()
-    {
-
+        GetComponent<Renderer>().material.SetFloat("_outliner_thickness", 0f);
     }
 
 }

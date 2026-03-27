@@ -188,15 +188,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 636584208}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.21471, y: 0, z: -13.64078}
+  m_LocalRotation: {x: -0, y: 0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.8913822, y: 0, z: -7.5356283}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1514954902224747050}
   - {fileID: 1093660740860463147}
   - {fileID: 197595790440017837}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 543450652074207857}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &703396916
 GameObject:
@@ -1280,7 +1280,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1705311856
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1450,8 +1450,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 636584209}
   - {fileID: 9051494490890421045}
-  - {fileID: 9007494518716427186}
   - {fileID: 30367673988686275}
   - {fileID: 4337349418403007721}
   - {fileID: 3624708559415198850}
@@ -2390,12 +2390,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3581380299494659490}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.03, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 11.323328, y: -0.029999971, z: -6.105151}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 543450652074207857}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9007494518716427187
 MonoBehaviour:
@@ -2471,9 +2471,9 @@ SceneRoots:
   - {fileID: 1558712396}
   - {fileID: 1097951619}
   - {fileID: 782962323}
+  - {fileID: 9007494518716427186}
   - {fileID: 543450652074207857}
   - {fileID: 1419539651}
   - {fileID: 703396919}
   - {fileID: 927093092}
   - {fileID: 573806013}
-  - {fileID: 636584209}
