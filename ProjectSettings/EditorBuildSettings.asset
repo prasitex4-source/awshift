@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PruebaOrdenador.unity
     guid: feebbf3135053744fb2e6fc68af08515
+  - enabled: 1
+    path: Assets/Scenes/TelefonoPrueba.unity
+    guid: 2bfe4ae54944c044d80d7a8133f3b236
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2dc27d4682efa8a45bb7d8aead0ca662, type: 3}
   m_UseUCBPForAssetBundles: 0
