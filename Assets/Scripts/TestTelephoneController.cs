@@ -1,17 +1,20 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using Yarn.Unity;
 
 public class TestTelephoneController : MonoBehaviour
 {
     [SerializeField] DialogueRunner dialogueRunner;
+    [SerializeField] Button Contestar;
+    [SerializeField] Button Colgar;
     void Update()
     {
-        if(Keyboard.current.eKey.wasPressedThisFrame)
+        if(ButtonPressed(Contestar))
         {
             StartDialogue();
         }
-        if(Keyboard.current.escapeKey.wasPressedThisFrame)
+        if(ButtonPressed(Colgar))
         {
             StopDialogue();
         }
@@ -28,5 +31,10 @@ public class TestTelephoneController : MonoBehaviour
         {
             dialogueRunner.Stop();
         }
+    }
+
+    bool ButtonPressed(Button button)
+    {
+        return button != null && button.onClick != null;
     }
 }
