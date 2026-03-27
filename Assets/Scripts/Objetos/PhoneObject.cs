@@ -1,15 +1,13 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PcObject : InteractuableObject
+public class PhoneObject : InteractuableObject
 {
-    //[SerializeField] GameObject pantalla;
-
     public override void Interact()
     {
         GameController.Instance.isCameraFixed = true;
         Cursor.lockState = CursorLockMode.Confined;
-        SceneManager.LoadScene("PruebaOrdenador");
+        SceneManager.LoadScene("TelefonoPrueba");
 
 
         /*if (!pantalla)
@@ -29,5 +27,4 @@ public class PcObject : InteractuableObject
     {
         GetComponent<Renderer>().material.SetFloat("_outliner_thickness", 0f);
     }
-
 }

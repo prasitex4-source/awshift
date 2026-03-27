@@ -26,9 +26,14 @@ public class SoundManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
     }
 
-    public static void PlaySound(SoundType sound, float volume = 1)
+    public static void PlaySong(int num, float volume = 1)
     {
-        instance.audioSource.PlayOneShot(instance.soundList[(int)sound], volume);
+        Debug.Log("radio on");
+        instance.audioSource.PlayOneShot(instance.songsList[num], volume);
     }
 
+    public static void StopSong()
+    {
+        instance.audioSource.Stop();
+    }
 }
