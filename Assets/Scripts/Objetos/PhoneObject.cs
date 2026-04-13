@@ -3,17 +3,20 @@ using UnityEngine.SceneManagement;
 
 public class PhoneObject : InteractuableObject
 {
+    [SerializeField] GameObject pantalla;
+    [SerializeField] GameObject newPos;
     public override void Interact()
     {
         GameController.Instance.isCameraFixed = true;
         Cursor.lockState = CursorLockMode.Confined;
-        SceneManager.LoadScene("TelefonoPrueba");
+       // SceneManager.LoadScene("TelefonoPrueba");
+    
 
-
-        /*if (!pantalla)
-        {
-            pantalla.SetActive(true);
-        }*/
+        transform.position = newPos.transform.position;
+        transform.rotation = newPos.transform.rotation;
+        Camera.main.transform.rotation = new Quaternion(0,0,0,0);
+        pantalla.SetActive(true);
+  
 
     }
 

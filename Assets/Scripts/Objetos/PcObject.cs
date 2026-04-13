@@ -3,19 +3,18 @@ using UnityEngine.SceneManagement;
 
 public class PcObject : InteractuableObject
 {
-    //[SerializeField] GameObject pantalla;
+    [SerializeField] GameObject pantalla;
 
     public override void Interact()
     {
         GameController.Instance.isCameraFixed = true;
         Cursor.lockState = CursorLockMode.Confined;
-        SceneManager.LoadScene("PruebaOrdenador");
+        //SceneManager.LoadScene("PruebaOrdenador");
 
 
-        /*if (!pantalla)
-        {
+            Camera.main.transform.rotation = new Quaternion(0,0,0,0);
             pantalla.SetActive(true);
-        }*/
+    
 
     }
 
