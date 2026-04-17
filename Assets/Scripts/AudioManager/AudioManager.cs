@@ -6,7 +6,7 @@ using UnityEngine;
 public class AudioManager : MonoBehaviour, IAudioSystem
 {
     public static IAudioSystem Instance { get; private set; }
-    
+
     [Header("Música")]
     [SerializeField] private AudioSource musicSource;
 
@@ -16,7 +16,7 @@ public class AudioManager : MonoBehaviour, IAudioSystem
 
     void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
         }
@@ -35,28 +35,28 @@ public class AudioManager : MonoBehaviour, IAudioSystem
     private AudioSource CreateNewSFXSource()
     {
         GameObject gObject = new GameObject("SFX_Source");
-        gObject.transform.SetParent(transform); 
+        gObject.transform.SetParent(transform);
         AudioSource aSource = gObject.AddComponent<AudioSource>();
         return aSource;
     }
 
     public AudioSource GetAvalibableSFXSource()
     {
-        foreach(var source in sfxPool)
+        foreach (var source in sfxPool)
         {
-            if(!source.isPlaying) return source;
+            if (!source.isPlaying) return source;
         }
         return CreateNewSFXSource();
     }
 
     public void PlaySFX(AudioData data, Vector3 position = default)
     {
-        if(data == null) return;
+        if (data == null) return;
 
         AudioSource aSource = GetAvalibableSFXSource();
         aSource.transform.position = position;
         aSource.clip = data.GetRandomAudioClip();
-        aSource.volume  = data.volume;
+        aSource.volume = data.volume;
         aSource.pitch = data.GetRandomAudioPitch();
 
         aSource.Play();
@@ -64,14 +64,14 @@ public class AudioManager : MonoBehaviour, IAudioSystem
 
     public void PlayMusic(AudioData data)
     {
-        if(data == null)
+        if (data == null)
         {
             StopMusic();
             return;
         }
 
         AudioClip mClip = data.GetRandomAudioClip();
-        if(musicSource.clip == mClip && musicSource.isPlaying) return;
+        if (musicSource.clip == mClip && musicSource.isPlaying) return;
 
         musicSource.clip = mClip;
         musicSource.volume = data.volume;

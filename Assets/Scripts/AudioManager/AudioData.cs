@@ -14,13 +14,13 @@ public class AudioData : ScriptableObject
     public AudioClip[] clips;
 
     [Header("Settings")]
-    [Range(0f ,1f)] public float volume = 1f;
+    [Range(0f, 1f)] public float volume = 1f;
     [SerializeField] public Vector2 pitchRange = new Vector2(0.8f, 1.2f);
     [SerializeField] public bool isLooping = false;
 
     public AudioClip GetRandomAudioClip()
     {
-        if(clips == null || clips.Length == 0)
+        if (clips == null || clips.Length == 0)
         {
             Debug.LogWarning("No tienes Audio Clips dentro del ScriptableObject");
             return null;
