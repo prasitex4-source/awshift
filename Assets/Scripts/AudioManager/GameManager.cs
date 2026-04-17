@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using FMODUnity;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] AudioData MusicData;
-    [SerializeField] AudioData SFXData;
+    [SerializeField] EventReference MusicData;
+    [SerializeField] EventReference SFXData;
 
     void Start()
     {
