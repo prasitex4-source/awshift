@@ -17,4 +17,9 @@ public class GameController : MonoBehaviour
         Instance = this;
         DontDestroyOnLoad(gameObject);
     }
+
+    public void CallBos()
+    {
+        Debug.Log("ring ring");
+    }
 }
