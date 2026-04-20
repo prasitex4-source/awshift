@@ -755,8 +755,8 @@ MonoBehaviour:
   switchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: ../Desktop/lilian/projectFMod/Examples/Examples.fspro
-  sourceBankPath: ../Desktop/lilian/projectFMod/Examples/Build
+  sourceProjectPath: FmodProject/awshift_FmodProject_Unity/awshift_FmodProject_Unity.fspro
+  sourceBankPath: FmodProject/awshift_FmodProject_Unity/Build
   sourceBankPathUnformatted: 
   BankRefreshCooldown: 5
   ShowBankRefreshWindow: 1
@@ -778,7 +778,8 @@ MonoBehaviour:
   VirtualChannelSettings: []
   RealChannelSettings: []
   Plugins: []
-  MasterBanks: []
+  MasterBanks:
+  - Master
   Banks: []
   BanksToLoad: []
   LiveUpdatePort: 9264
