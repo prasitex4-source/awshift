@@ -3147,6 +3147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0aed6537df455c148ac993b32159df60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameController
+  fadeImage: {fileID: 1712706883}
   isCameraFixed: 0
 --- !u!4 &516432286
 Transform:
@@ -7967,7 +7968,7 @@ Transform:
   m_GameObject: {fileID: 1631731873}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.019999947, y: 0.46499994, z: 0.425}
+  m_LocalPosition: {x: -0.019999947, y: 0.46499994, z: 0.953}
   m_LocalScale: {x: 0.25560927, y: 0.21023862, z: 0.30643457}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8301,13 +8302,15 @@ GameObject:
   - component: {fileID: 1712706879}
   - component: {fileID: 1712706882}
   - component: {fileID: 1712706881}
+  - component: {fileID: 1712706884}
+  - component: {fileID: 1712706883}
   m_Layer: 5
   m_Name: Exp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1712706879
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8365,6 +8368,31 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1712706878}
   m_CullTransparentMesh: 1
+--- !u!114 &1712706883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712706878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32e7ea99b06300845a2329d8dad3a8e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ImageTween
+  animationTime: 1
+--- !u!225 &1712706884
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1712706878}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1735593893
 GameObject:
   m_ObjectHideFlags: 0
@@ -8636,7 +8664,6 @@ GameObject:
   - component: {fileID: 1760911071}
   - component: {fileID: 1760911070}
   - component: {fileID: 1760911069}
-  - component: {fileID: 1760911073}
   m_Layer: 5
   m_Name: ExplosionPlaceholder
   m_TagString: Untagged
@@ -8727,19 +8754,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1760911073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1760911068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32e7ea99b06300845a2329d8dad3a8e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ImageTween
-  animationTime: 1
 --- !u!1 &1784985815
 GameObject:
   m_ObjectHideFlags: 0
@@ -10456,7 +10470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aca9bb60a2f111a4088deb634603b964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
-  maxTime: 1
+  maxTime: 1100
 --- !u!4 &2035562386
 Transform:
   m_ObjectHideFlags: 0

@@ -4,6 +4,7 @@ public interface Iinteractuable
 {
     public void Interact();
     public void Resaltar();
+    public void ExitInteract();
     public void QuitarResalte();
     public string InteractuableMessage { get; }
 }
@@ -18,6 +19,7 @@ public abstract class InteractuableObject : MonoBehaviour, Iinteractuable
     [SerializeField] string interactuableMessage;
 
     public abstract void Interact();
+    public abstract void ExitInteract();
     public abstract void Resaltar();
     public abstract void QuitarResalte();
 }

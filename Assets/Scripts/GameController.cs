@@ -1,8 +1,11 @@
+
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
     public static GameController Instance;
+    [SerializeField] public ImageTween fadeImage;
 
     public bool isCameraFixed = false;
 
@@ -15,11 +18,21 @@ public class GameController : MonoBehaviour
         }
 
         Instance = this;
-        DontDestroyOnLoad(gameObject);
     }
 
     public void CallBos()
     {
         Debug.Log("ring ring");
+    }
+
+    public void RestartLevel()
+    {
+        fadeImage.FadeIn();
+    }
+
+    public void LoadCurrentScene()
+    {
+        Scene currScene = SceneManager.GetActiveScene();
+        SceneManager.LoadScene(currScene.buildIndex);
     }
 }

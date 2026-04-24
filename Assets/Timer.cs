@@ -1,3 +1,5 @@
+using Microsoft.Unity.VisualStudio.Editor;
+using DG.Tweening;
 using UnityEngine;
 
 public class Timer : MonoBehaviour
@@ -7,28 +9,30 @@ public class Timer : MonoBehaviour
     private float timeInSecond;
     private float currentTime;
     private bool BossCalled = false;
+
     void Awake()
     {
 
-        timeInSecond = maxTime * 60;
-        currentTime = timeInSecond;
+        //timeInSecond = maxTime * 60;   // LUEGO CAMBIAR MAXTIMES POR TIMEINSECOND :)))))
+        currentTime = maxTime;
         instance = this;
 
     }
 
     void Update()
     {
-       currentTime -= Time.deltaTime;
-        
+        currentTime -= Time.deltaTime;
+
         if (currentTime <= 0)
         {
-            Debug.Log(" :)");
-            currentTime = timeInSecond;
+            GameController.Instance.RestartLevel();
+            currentTime = maxTime;
         }
-        else if ( currentTime <= 3 && !BossCalled)
+        else if (currentTime <= 3 && !BossCalled)
         {
             BossCalled = true;
             GameController.Instance.CallBos();
         }
     }
+
 }

@@ -51,6 +51,10 @@ public class InteractuableControler : MonoBehaviour
         {
             currentTargetInter.Interact();
         }
+        else if (Keyboard.current[Key.Escape].wasPressedThisFrame)
+        {
+            currentTargetInter.ExitInteract();
+        }
     }
 
     void UpdateCurrentInterMaterial()

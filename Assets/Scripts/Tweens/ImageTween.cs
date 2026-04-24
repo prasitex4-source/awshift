@@ -17,10 +17,9 @@ public class ImageTween : MonoBehaviour
     }
 
 
-    void Update()
+
+    public void FadeIn()
     {
-        if (Keyboard.current.qKey.wasPressedThisFrame && hasTweened)
-        {
             hasTweened = false;
             _canvasGroup.DOFade(1f, animationTime)
             .SetEase(Ease.OutSine)
@@ -29,11 +28,12 @@ public class ImageTween : MonoBehaviour
                 hasTweened = true;
                 _canvasGroup.blocksRaycasts = true;
                 _canvasGroup.interactable = true;
+                GameController.Instance.LoadCurrentScene();
             });
-        }
+    }
 
-        else if (Keyboard.current.eKey.wasPressedThisFrame && hasTweened)
-        {
+    public void FadeOut()
+    {
             hasTweened = false;
             _canvasGroup.DOFade(_initialAlpha, animationTime)
             .SetEase(Ease.OutSine)
@@ -43,6 +43,5 @@ public class ImageTween : MonoBehaviour
                 _canvasGroup.blocksRaycasts = false;
                 _canvasGroup.interactable = false;
             });
-        }
     }
 }

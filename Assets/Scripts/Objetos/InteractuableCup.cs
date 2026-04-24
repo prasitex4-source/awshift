@@ -39,4 +39,9 @@ public class InteractuableCup : InteractuableObject
     {
         transform.position = originalpos;
     }
+
+    public override void ExitInteract()
+    {
+        throw new System.NotImplementedException();
+    }
 }

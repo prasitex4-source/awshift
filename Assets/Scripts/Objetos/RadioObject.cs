@@ -37,4 +37,9 @@ public class RadioObject : InteractuableObject
     {
         GetComponent<Renderer>().material.SetFloat("_outliner_thickness", 0f);
     }
+
+    public override void ExitInteract()
+    {
+        throw new System.NotImplementedException();
+    }
 }
