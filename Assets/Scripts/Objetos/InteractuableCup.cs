@@ -18,11 +18,6 @@ public class InteractuableCup : InteractuableObject
         audiosource.PlayOneShot(tazaSound);
         transform.position = pos.transform.position;
 
-        /*if (Keyboard.current[Key.W].wasPressedThisFrame)
-        {
-            transform.position = originalpos;
-        }*/
-
     }
 
     public override void Resaltar()
@@ -35,13 +30,8 @@ public class InteractuableCup : InteractuableObject
         GetComponent<Renderer>().material.SetFloat("_outliner_thickness", 0f);
     }
 
-    public void StopInteract()
-    {
-        transform.position = originalpos;
-    }
-
     public override void ExitInteract()
     {
-        throw new System.NotImplementedException();
+        transform.position = originalpos;
     }
 }
