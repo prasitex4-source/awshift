@@ -5,6 +5,14 @@ public class PhoneObject : InteractuableObject
 {
     [SerializeField] GameObject pantalla;
     [SerializeField] GameObject newPos;
+    private Vector3 originalPos;
+    private Quaternion originalRot;
+    
+    void Start()
+    {
+        originalPos = transform.position;
+        originalRot = transform.rotation;
+    }
     public override void Interact()
     {
         GameController.Instance.isCameraFixed = true;
@@ -33,6 +41,9 @@ public class PhoneObject : InteractuableObject
 
     public override void ExitInteract()
     {
-        throw new System.NotImplementedException();
+        GameController.Instance.isCameraFixed = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        transform.position = originalPos;
+        transform.rotation = originalRot;
     }
 }

@@ -11,9 +11,8 @@ public class PcObject : InteractuableObject
         Cursor.lockState = CursorLockMode.Confined;
         //SceneManager.LoadScene("PruebaOrdenador");
 
-
             Camera.main.transform.rotation = new Quaternion(0,0,0,0);
-            // Camera.main.transform.position.z = 
+            
             pantalla.SetActive(true);
     }
 
