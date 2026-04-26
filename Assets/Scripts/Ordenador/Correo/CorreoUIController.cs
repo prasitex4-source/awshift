@@ -8,6 +8,8 @@ public class CorreoUIController : MonoBehaviour
     [SerializeField] GameObject inbox;
     [SerializeField] GameObject spam;
 
+    [SerializeField] GameObject escritorio;
+
     public void ShowPapelera()
     {
         papelera.SetActive(true);
@@ -45,10 +47,12 @@ public class CorreoUIController : MonoBehaviour
         GetComponent<CanvasGroup>().alpha = 0;
         GetComponent<CanvasGroup>().interactable = false;
         GetComponent<CanvasGroup>().blocksRaycasts = false;
+        escritorio.SetActive(true);
     }
 
     public void OpenCorreo()
     {
+        escritorio.SetActive(false);
         GetComponent<CanvasGroup>().alpha = 1;
         GetComponent<CanvasGroup>().interactable = true;
         GetComponent<CanvasGroup>().blocksRaycasts = true;

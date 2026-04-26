@@ -1,0 +1,14 @@
+﻿<Solution>
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="YarnSpinner.Unity.csproj" />
+  <Project Path="YarnSpinner.Unity.Editor.csproj" />
+  <Project Path="FMODUnityResonanceEditor.csproj" />
+  <Project Path="FMODUnityEditor.csproj" />
+  <Project Path="Assembly-CSharp-firstpass.csproj" />
+  <Project Path="FMODUnity.csproj" />
+  <Project Path="YarnSpinner.Addons.TextAnimatorIntegration.Editor.csproj" />
+  <Project Path="FMODUnityHaptics.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="YarnSpinner.Addons.TextAnimatorIntegration.csproj" />
+  <Project Path="FMODUnityResonance.csproj" />
+</Solution>

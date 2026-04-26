@@ -4,10 +4,12 @@ public class LogManager : MonoBehaviour
 {
     [SerializeField] GameObject escritorio;
 
+    [SerializeField] GameObject login;
+
 
     public void OnArrowPress()
     {
         escritorio.SetActive(true);
-        this.gameObject.SetActive(false); //como no volverá al login, lo desactivamos y ya jeje
+        login.SetActive(false); //como no volver al login, lo desactivamos y ya jeje
     }
 }

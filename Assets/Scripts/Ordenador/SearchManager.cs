@@ -1,46 +1,23 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SearchManager : MonoBehaviour
 {
-    [SerializeField] GameObject optA;
-    [SerializeField] GameObject optB; 
-    [SerializeField] GameObject optC;
-    [SerializeField] GameObject optD;
+    [SerializeField] GameObject escritorio;
 
-    public void OnA()
+    [SerializeField] GameObject Error;
+
+    public void Search()
     {
-        optA.gameObject.SetActive(true);
-
+        this.gameObject.SetActive(false);
+        Error.SetActive(true);
+    
     }
 
-    public void OnB()
-    {
-        optB.gameObject.SetActive(true);
-
-    }
-
-    public void OnC()
-    {
-        optC.gameObject.SetActive(true);
-
-    }
-
-    public void OnD()
-    {
-        optD.gameObject.SetActive(true);
-
-    }
-
-    public void OnBack()
-    {
-        optA.gameObject.SetActive(false);
-        optB.gameObject.SetActive(false);
-        optC.gameObject.SetActive(false);
-        optD.gameObject.SetActive(false);
-    }
     public void OnCrossPress()
     {
         this.gameObject.SetActive(false);
+        escritorio.SetActive(true);
 
     }
 }
