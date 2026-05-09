@@ -23,7 +23,6 @@ public class PhoneObject : InteractuableObject
         transform.position = newPos.transform.position;
         transform.rotation = newPos.transform.rotation;
         Camera.main.transform.rotation = new Quaternion(0,0,0,0);
-        pantalla.SetActive(true);
   
 
     }
@@ -45,5 +44,10 @@ public class PhoneObject : InteractuableObject
         Cursor.lockState = CursorLockMode.Locked;
         transform.position = originalPos;
         transform.rotation = originalRot;
+    }
+
+    public void Llamada()
+    {
+        pantalla.SetActive(true);
     }
 }

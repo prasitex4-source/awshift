@@ -6,6 +6,7 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instance;
     [SerializeField] public ImageTween fadeImage;
+    [SerializeField] PhoneObject phone;
 
     public bool isCameraFixed = false;
 
@@ -23,6 +24,7 @@ public class GameController : MonoBehaviour
     public void CallBos()
     {
         Debug.Log("ring ring");
+        phone.Llamada();
     }
 
     public void RestartLevel()

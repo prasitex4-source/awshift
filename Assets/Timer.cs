@@ -1,4 +1,3 @@
-using Microsoft.Unity.VisualStudio.Editor;
 using DG.Tweening;
 using UnityEngine;
 
@@ -25,10 +24,10 @@ public class Timer : MonoBehaviour
 
         if (currentTime <= 0)
         {
-            GameController.Instance.RestartLevel();
+            GameController.Instance.LoadCurrentScene();
             currentTime = maxTime;
         }
-        else if (currentTime <= 3 && !BossCalled)
+        else if (currentTime <= 20 && !BossCalled)
         {
             BossCalled = true;
             GameController.Instance.CallBos();

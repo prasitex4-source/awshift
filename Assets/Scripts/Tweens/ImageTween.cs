@@ -6,7 +6,6 @@ public class ImageTween : MonoBehaviour
 {
     private CanvasGroup _canvasGroup;
     private float _initialAlpha;
-    private bool hasTweened = true;
     [SerializeField] private float animationTime = 1f;
     void Awake()
     {
@@ -20,12 +19,11 @@ public class ImageTween : MonoBehaviour
 
     public void FadeIn()
     {
-            hasTweened = false;
+
             _canvasGroup.DOFade(1f, animationTime)
             .SetEase(Ease.OutSine)
             .OnComplete(() =>
             {
-                hasTweened = true;
                 _canvasGroup.blocksRaycasts = true;
                 _canvasGroup.interactable = true;
                 GameController.Instance.LoadCurrentScene();
@@ -34,12 +32,12 @@ public class ImageTween : MonoBehaviour
 
     public void FadeOut()
     {
-            hasTweened = false;
+
             _canvasGroup.DOFade(_initialAlpha, animationTime)
             .SetEase(Ease.OutSine)
             .OnComplete(() =>
             {
-                hasTweened = true;
+
                 _canvasGroup.blocksRaycasts = false;
                 _canvasGroup.interactable = false;
             });
