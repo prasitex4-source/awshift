@@ -24,6 +24,6 @@ public class DesktopManager : MonoBehaviour
     {
         escritorio.SetActive(false);
         mail.SetActive(true);
-
+        mail.GetComponent<CorreoUIController>().OpenCorreo();
     }
 }

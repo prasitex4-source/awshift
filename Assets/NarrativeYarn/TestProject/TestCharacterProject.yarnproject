@@ -10,5 +10,6 @@
     "localisation": {},
     "baseLanguage": "es",
     "compilerOptions": {},
-    "definitionsFiles": []
+    "definitionsFiles": [],
+    "definitions": ".ysls.json"
 }
