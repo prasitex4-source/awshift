@@ -3,8 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class PhoneObject : InteractuableObject
 {
-    [SerializeField] GameObject pantalla;
-    [SerializeField] GameObject newPos;
+    //[SerializeField] GameObject pantalla;
+    //[SerializeField] GameObject newPos;
     private Vector3 originalPos;
     private Quaternion originalRot;
     
@@ -20,8 +20,8 @@ public class PhoneObject : InteractuableObject
        // SceneManager.LoadScene("TelefonoPrueba");
     
 
-        transform.position = newPos.transform.position;
-        transform.rotation = newPos.transform.rotation;
+        //transform.position = newPos.transform.position;
+        //transform.rotation = newPos.transform.rotation;
         Camera.main.transform.rotation = new Quaternion(0,0,0,0);
   
 
@@ -48,6 +48,6 @@ public class PhoneObject : InteractuableObject
 
     public void Llamada()
     {
-        pantalla.SetActive(true);
+        //pantalla.SetActive(true);
     }
 }

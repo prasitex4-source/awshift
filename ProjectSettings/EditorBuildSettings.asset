@@ -17,8 +17,11 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/TelefonoPrueba.unity
     guid: 2bfe4ae54944c044d80d7a8133f3b236
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ALFA.unity
     guid: 634f46bb7c852fb468035d1276de4979
+  - enabled: 1
+    path: Assets/Scenes/BETA/Pajarillo_Test.unity
+    guid: 91b8efd4e876ef1468726e5e47c67977
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2dc27d4682efa8a45bb7d8aead0ca662, type: 3}

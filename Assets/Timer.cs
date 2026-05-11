@@ -30,7 +30,12 @@ public class Timer : MonoBehaviour
         else if (currentTime <= 20 && !BossCalled)
         {
             BossCalled = true;
-            GameController.Instance.CallBos();
+            pajarillo_script.Instance.UhOh();
+        }
+        else if (currentTime <= 10)
+        {
+            BossCalled = true;
+            pajarillo_script.Instance.TestTwo();
         }
     }
 
