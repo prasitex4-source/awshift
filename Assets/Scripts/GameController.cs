@@ -23,8 +23,7 @@ public class GameController : MonoBehaviour
 
     public void CallBos()
     {
-        Debug.Log("ring ring");
-        phone.Llamada();
+        Debug.Log("BOSS LLAMADO");
     }
 
     public void RestartLevel()

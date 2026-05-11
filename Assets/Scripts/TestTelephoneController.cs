@@ -8,6 +8,7 @@ public class TestTelephoneController : MonoBehaviour
     [SerializeField] DialogueRunner dialogueRunner;
     [SerializeField] Button Contestar;
     [SerializeField] Button Colgar;
+    
     void Update()
     {
         if(ButtonPressed(Contestar))
