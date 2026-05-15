@@ -1,10 +1,11 @@
 using UnityEngine;
 using UnityEngine.Rendering;
+using FMODUnity;
 
 public class RadioObject : InteractuableObject
 {
-    [SerializeField] private AudioSource audiosource;
-    [SerializeField] SoundManager soundManager;
+    [SerializeField] private EventReference audioReference;
+
     int song = 0;
 
 
@@ -16,16 +17,13 @@ public class RadioObject : InteractuableObject
             SoundManager.StopSong();
             song = 0;
         }
-
         else
         {
-            SoundManager.StopSong();
-            SoundManager.PlaySong(song);
+            AudioManager.Instance.StopMusic();
+            AudioManager.Instance.PlayMusic(audioReference);
             Debug.Log(song);
             song ++;
         }
-
-
     }
 
     public override void Resaltar()
@@ -40,6 +38,6 @@ public class RadioObject : InteractuableObject
 
     public override void ExitInteract()
     {
-        throw new System.NotImplementedException();
+        Debug.Log("Exit Interact");
     }
 }

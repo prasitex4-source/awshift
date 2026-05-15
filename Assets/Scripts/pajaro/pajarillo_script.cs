@@ -1,11 +1,13 @@
 using System.Collections.Generic;
+using FMODUnity;
 using UnityEngine;
 
 public class pajarillo_script : MonoBehaviour
 {
     public static pajarillo_script Instance;
+    [SerializeField] private EventReference pajaroSound;
 
-    [SerializeField] List<GameObject> Pajarillos;
+    [SerializeField] List<GameObject> Pajarillos = new List<GameObject>();
     [SerializeField] GameObject alarmLight;
 
     public int Pajaro_Stage;
@@ -28,6 +30,7 @@ public class pajarillo_script : MonoBehaviour
         Pajaro_Stage = 0;
 
         Cursor.lockState = CursorLockMode.Confined;
+        AudioManager.Instance.PlaySFX(pajaroSound, transform.position, "PajaroParameter", "Enfadado");
 
         Pajarillos[Pajaro_Stage].SetActive(true);
         alarmLight.SetActive(true);
@@ -44,13 +47,11 @@ public class pajarillo_script : MonoBehaviour
 
         public void HideBird()
         {
-            //Debug.Log("Ocultando: " + Pajaro_Stage);
 
-            //Pajarillos[Pajaro_Stage].SetActive(false);
-
-            foreach(GameObject bird in Pajarillos)
+            for(int i = 0; i < Pajarillos.Count; i++)
             {
-                bird.SetActive(false);
+                Debug.Log("Pajarillo " + i + " oculto");
+                Pajarillos[i].SetActive(false);
             }
 
             Cursor.lockState = CursorLockMode.Locked;

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.03.00">
+	<object class="ParameterPreset" id="{52a2b997-2a93-42f4-9c4f-9c3805d463ae}">
+		<property name="name">
+			<value>PajaroParameter</value>
+		</property>
+		<relationship name="folder">
+			<destination>{8aadb695-4775-41fd-b0f6-4a8542f76ef8}</destination>
+		</relationship>
+		<relationship name="parameter">
+			<destination>{91f93e16-24a4-4c74-916b-22d0d6561f2f}</destination>
+		</relationship>
+	</object>
+	<object class="GameParameter" id="{91f93e16-24a4-4c74-916b-22d0d6561f2f}">
+		<property name="parameterType">
+			<value>2</value>
+		</property>
+		<property name="maximum">
+			<value>3</value>
+		</property>
+		<property name="enumerationLabels">
+			<value>Contento</value>
+			<value>Enfadado</value>
+			<value>Triste</value>
+		</property>
+		<property name="initialValue">
+			<value>0</value>
+		</property>
+	</object>
+</objects>

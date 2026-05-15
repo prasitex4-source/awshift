@@ -1,10 +1,10 @@
+using FMODUnity;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class InteractuableCup : InteractuableObject
 {
-    [SerializeField] private AudioSource audiosource;
-    [SerializeField] private AudioClip tazaSound;
+    [SerializeField] private EventReference tazaSound;
     [SerializeField] private GameObject pos;
     Vector3 originalpos;
 
@@ -15,7 +15,7 @@ public class InteractuableCup : InteractuableObject
 
     public override void Interact()
     {
-        audiosource.PlayOneShot(tazaSound);
+        AudioManager.Instance.PlaySFX(tazaSound, transform.position);
         transform.position = pos.transform.position;
 
     }
