@@ -5,8 +5,11 @@ using Yarn.Unity;
 public class PhoneObject : InteractuableObject
 {
     [SerializeField] private DialogueRunner dialogueRunner;
-    [SerializeField] private string yarnNode = "Telefono";
     [SerializeField] private float ringDelay = 5f;
+    [SerializeField] private string yarnNode = "ChrisDialogueScript";
+    [SerializeField] private string yarnNode2 = "SarahDialogue_Script";
+    [SerializeField] private string yarnNode3 = "DavidDialogue_Script";
+    [SerializeField] private string yarnNode4 = "JenniferDialogue_Script";
  
     private Vector3 originalPos;
     private Quaternion originalRot;
@@ -39,7 +42,7 @@ public class PhoneObject : InteractuableObject
         /*GameController.Instance.isCameraFixed = true;
         Cursor.lockState = CursorLockMode.Confined;
         Camera.main.transform.rotation = Quaternion.identity;*/
- 
+        //Timer.instance.
         dialogueRunner.StartDialogue(yarnNode);
     }
  

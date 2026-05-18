@@ -2134,7 +2134,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aca9bb60a2f111a4088deb634603b964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Timer
-  maxTime: 30
+  maxTime: 60
+  pajarilloFirstEvent: 10
+  pajarilloSecondtEvent: 20
+  pajarilloThirdEvent: 30
+  pajarilloForthEvent: 40
 --- !u!4 &266306540
 Transform:
   m_ObjectHideFlags: 0
@@ -6611,8 +6615,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PhoneObject
   interactuableMessage: 
   dialogueRunner: {fileID: 1738696217}
-  yarnNode: ChrisDialogueScript
   ringDelay: 5
+  yarnNode: ChrisDialogueScript
+  yarnNode2: SarahDialogue_Script
+  yarnNode3: DavidDialogue_Script
+  yarnNode4: JenniferDialogue_Script
 --- !u!1001 &1502257606
 PrefabInstance:
   m_ObjectHideFlags: 0
