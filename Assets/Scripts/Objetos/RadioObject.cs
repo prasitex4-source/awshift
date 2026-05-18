@@ -28,7 +28,7 @@ public class RadioObject : InteractuableObject
 
     public override void Resaltar()
     {
-        GetComponent<Renderer>().material.SetFloat("_outliner_thickness", 0.02f);
+        GetComponent<Renderer>().material.SetFloat("_outliner_thickness", 0.01f);
     }
 
     public override void QuitarResalte()

@@ -50,7 +50,7 @@ public class PhoneObject : InteractuableObject
     {
         // Solo resaltar si el teléfono puede contestarse
         if (!canAnswer || answered) return;
-        GetComponent<Renderer>().material.SetFloat("_outliner_thickness", 10f);
+        GetComponent<Renderer>().material.SetFloat("_outliner_thickness", 0.01f);
     }
  
     public override void QuitarResalte()

@@ -41,7 +41,14 @@ public class DynamicComputerScreen : MonoBehaviour
             if (HitResult.collider.gameObject != gameObject)
                 return;
 
-            OnCursorInput.Invoke(HitResult.textureCoord, MouseScroll);
+            Vector2 uv = HitResult.textureCoord;
+
+            Vector2 correctedUV = new Vector2(
+                uv.x * (1000f / 256f),
+                uv.y * (1000f / 256f)
+            );
+
+            OnCursorInput.Invoke(correctedUV, MouseScroll);
         }
     }
 }

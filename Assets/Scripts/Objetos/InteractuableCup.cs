@@ -6,6 +6,7 @@ public class InteractuableCup : InteractuableObject
 {
     [SerializeField] private EventReference tazaSound;
     [SerializeField] private GameObject pos;
+    [SerializeField] private float thickness;
     Vector3 originalpos;
 
     public void Start()
@@ -22,7 +23,7 @@ public class InteractuableCup : InteractuableObject
 
     public override void Resaltar()
     {
-        GetComponent<Renderer>().material.SetFloat("_outliner_thickness", 0.02f);
+        GetComponent<Renderer>().material.SetFloat("_outliner_thickness", thickness);
     }
 
     public override void QuitarResalte()
