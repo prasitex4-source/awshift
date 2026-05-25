@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Rendering;
+using System.Collections;
 
 public enum GamePhase
 {
@@ -30,6 +31,15 @@ public class WorldAtmosphere : MonoBehaviour
     public float exposure;
     public float bloom;
     public float vignette;
+
+    [Header("Nuclear Flash Settings")]
+    public float flickerDuration = 1.2f;
+    public float finalBlastDuration = 2f;
+
+    [Header("Others")]
+    public float fadeDuration = 2f;
+
+    private Coroutine currentRoutine;
 
     private void Awake()
     {
@@ -74,45 +84,270 @@ public class WorldAtmosphere : MonoBehaviour
         vignette = 0.2f;
     }
 
-
     public void NuclearFlash()
     {
-        RenderSettings.skybox.SetColor("_Tint", nuclearSky);
-
-        sunLight.intensity = 4f;
-        sunLight.color = Color.white;
-
-        RenderSettings.ambientLight = Color.red;
-
-        exposure = 3f;
-        bloom = 2f;
-        vignette = 0.4f;
+        StartCoroutine(NuclearFlashCin());
     }
 
-    public void Dream()
+    IEnumerator NuclearFlashCin()
     {
-        RenderSettings.skybox.SetColor("_Tint", dreamSky);
+        // Guardamos estado inicial
+        Color initialSky = RenderSettings.skybox.GetColor("_Tint");
+        Color initialAmbient = RenderSettings.ambientLight;
 
-        sunLight.intensity = 0.8f;
-        sunLight.color = new Color(0.9f, 0.7f, 1f);
+        float initialIntensity = sunLight.intensity;
+        Color initialSunColor = sunLight.color;
 
-        RenderSettings.ambientLight = dreamAmbient;
+        // ----------
+        // FLICKER
+        // ----------
+        float t = 0f;
 
-        exposure = 1.2f;
-        bloom = 1.5f;
-        vignette = 0.3f;
+        while (t < flickerDuration)
+        {
+            t += Time.deltaTime;
+
+            // Parpadeo irregular
+            float flicker = Mathf.PingPong(Time.time * 25f, 1f);
+
+            // Intensidad subiendo poco a poco
+            float intensity = Mathf.Lerp(initialIntensity, 3f, t / flickerDuration);
+
+            // Añadimos vibración/parpadeo
+            sunLight.intensity = intensity + flicker * 0.8f;
+
+            // Color ligeramente más caliente
+            sunLight.color = Color.Lerp(
+                initialSunColor,
+                new Color(1f, 0.9f, 0.7f),
+                t / flickerDuration
+            );
+
+            yield return null;
+        }
+
+        // ----------
+        // BLAST
+        // ----------
+        t = 0f;
+
+        while (t < finalBlastDuration)
+        {
+            t += Time.deltaTime;
+
+            float lerp = t / finalBlastDuration;
+
+            RenderSettings.skybox.SetColor(
+                "_Tint",
+                Color.Lerp(initialSky, nuclearSky, lerp)
+            );
+
+            RenderSettings.ambientLight = Color.Lerp(
+                initialAmbient,
+                Color.red,
+                lerp
+            );
+
+            sunLight.intensity = Mathf.Lerp(3f, 10f, lerp);
+
+            sunLight.color = Color.Lerp(
+                new Color(1f, 0.9f, 0.7f),
+                Color.white,
+                lerp
+            );
+
+            // Post FX
+            exposure = Mathf.Lerp(0.8f, 5f, lerp);
+            bloom = Mathf.Lerp(0.3f, 3f, lerp);
+            vignette = Mathf.Lerp(0.2f, 0.5f, lerp);
+
+            yield return null;
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        // Explosión final
+        Dream();
     }
-    public void White()
+
+public void Dream()
+{
+    StartCoroutine(DreamTransition());
+}
+
+IEnumerator DreamTransition()
+{
+    Color startSky = RenderSettings.skybox.GetColor("_Tint");
+    Color startAmbient = RenderSettings.ambientLight;
+
+    float startIntensity = sunLight.intensity;
+    Color startSunColor = sunLight.color;
+
+    float startExposure = exposure;
+    float startBloom = bloom;
+    float startVignette = vignette;
+
+    // TARGETS DREAM
+    Color targetSky = new Color(1f, 0.45f, 0.25f);
+
+    Color targetAmbient = new Color(
+        1f,
+        0.55f,
+        0.4f
+    );
+
+    Color targetSun = new Color(
+        1f,
+        0.65f,
+        0.35f
+    );
+
+    float targetIntensity = 2.5f;
+
+    float targetExposure = 1.8f;
+    float targetBloom = 2.2f;
+    float targetVignette = 0.35f;
+
+    float duration = 4f;
+
+    float t = 0f;
+
+    while (t < duration)
     {
-        RenderSettings.skybox.SetColor("_Tint", whiteSky);
+        t += Time.deltaTime;
 
-        sunLight.intensity = 10f;
-        sunLight.color = Color.white;
+        float lerp = Mathf.SmoothStep(
+            0f,
+            1f,
+            t / duration
+        );
 
-        RenderSettings.ambientLight = Color.white;
+        RenderSettings.skybox.SetColor(
+            "_Tint",
+            Color.Lerp(startSky, targetSky, lerp)
+        );
 
-        exposure = 10f;
-        bloom = 5f;
-        vignette = 0f;
+        RenderSettings.ambientLight = Color.Lerp(
+            startAmbient,
+            targetAmbient,
+            lerp
+        );
+
+        sunLight.color = Color.Lerp(
+            startSunColor,
+            targetSun,
+            lerp
+        );
+
+        sunLight.intensity = Mathf.Lerp(
+            startIntensity,
+            targetIntensity,
+            lerp
+        );
+
+        exposure = Mathf.Lerp(
+            startExposure,
+            targetExposure,
+            lerp
+        );
+
+        bloom = Mathf.Lerp(
+            startBloom,
+            targetBloom,
+            lerp
+        );
+
+        vignette = Mathf.Lerp(
+            startVignette,
+            targetVignette,
+            lerp
+        );
+
+        yield return null;
     }
+}
+public void White()
+{
+    StartCoroutine(WhiteTransition());
+}
+
+IEnumerator WhiteTransition()
+{
+    // Estado inicial (Dream)
+    Color startSky = RenderSettings.skybox.GetColor("_Tint");
+    Color startAmbient = RenderSettings.ambientLight;
+
+    float startIntensity = sunLight.intensity;
+    Color startSunColor = sunLight.color;
+
+    float startExposure = exposure;
+    float startBloom = bloom;
+    float startVignette = vignette;
+
+    // Estado final (Whiteout)
+    Color targetSky = Color.white;
+    Color targetAmbient = Color.white;
+    Color targetSun = Color.white;
+
+    float targetIntensity = 10f;
+    float targetExposure = 10f;
+    float targetBloom = 5f;
+    float targetVignette = 0f;
+
+    float duration = 2.5f;
+
+    float t = 0f;
+
+    while (t < duration)
+    {
+        t += Time.deltaTime;
+
+        float lerp = Mathf.SmoothStep(0f, 1f, t / duration);
+
+        // Skybox
+        RenderSettings.skybox.SetColor(
+            "_Tint",
+            Color.Lerp(startSky, targetSky, lerp)
+        );
+
+        // Ambient
+        RenderSettings.ambientLight = Color.Lerp(
+            startAmbient,
+            targetAmbient,
+            lerp
+        );
+
+        // Sun
+        sunLight.color = Color.Lerp(
+            startSunColor,
+            targetSun,
+            lerp
+        );
+
+        sunLight.intensity = Mathf.Lerp(
+            startIntensity,
+            targetIntensity,
+            lerp
+        );
+
+        // Post FX
+        exposure = Mathf.Lerp(startExposure, targetExposure, lerp);
+        bloom = Mathf.Lerp(startBloom, targetBloom, lerp);
+        vignette = Mathf.Lerp(startVignette, targetVignette, lerp);
+
+        yield return null;
+    }
+
+    // Clamp final (seguridad)
+    RenderSettings.skybox.SetColor("_Tint", targetSky);
+    RenderSettings.ambientLight = targetAmbient;
+    sunLight.color = targetSun;
+    sunLight.intensity = targetIntensity;
+
+    exposure = targetExposure;
+    bloom = targetBloom;
+    vignette = targetVignette;
+
+    ScreenFade.instance.FadeToWhiteStart(fadeDuration);
+}
 }

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using FMODUnity;
+using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
 
 public class pajarillo_script : MonoBehaviour
@@ -8,7 +9,9 @@ public class pajarillo_script : MonoBehaviour
     [SerializeField] private EventReference pajaroSound;
 
     [SerializeField] List<GameObject> Pajarillos = new List<GameObject>();
-    [SerializeField] GameObject alarmLight;
+
+    [SerializeField] GameObject Alarm;
+    [SerializeField] GameObject pantalla;
 
     public int Pajaro_Stage;
 
@@ -25,6 +28,25 @@ public class pajarillo_script : MonoBehaviour
         Pajaro_Stage = 0;
     }
 
+    public void AlarmOn()
+    {
+        if(!pantalla.activeSelf)
+        pantalla.SetActive(true);
+
+        if(pantalla.activeSelf)
+        {
+            pantalla.SetActive(true);
+            GameController.Instance.isCameraFixed = false;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        Alarm.SetActive(true);
+    }
+    
+    public void AlarmOff()
+    {
+        Alarm.SetActive(false);
+    }
+
     public void UhOh()
     {
         Pajaro_Stage = 0;
@@ -33,7 +55,6 @@ public class pajarillo_script : MonoBehaviour
         AudioManager.Instance.PlaySFX(pajaroSound, transform.position, "PajaroParameter", "Enfadado");
 
         Pajarillos[Pajaro_Stage].SetActive(true);
-        alarmLight.SetActive(true);
     }
 
     public void TestTwo()
