@@ -1,31 +1,46 @@
-using System;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PcObject : InteractuableObject
 {
     [SerializeField] GameObject pantalla;
     [SerializeField] private float thickness;
     [SerializeField] private Transform camPos;
+
     private Vector3 originalCamPos;
+    private Quaternion originalCamRot;
+    private Camera cam;
 
     void Awake()
     {
-        originalCamPos = Camera.main.transform.position;
-    }
+        cam = Camera.main;
 
+        originalCamPos = cam.transform.position;
+        originalCamRot = cam.transform.rotation;
+    }
 
     public override void Interact()
     {
-        GameController.Instance.isCameraFixed = true; // hacer zoom en el ordenador en vez de lockear?????
-        Cursor.lockState = CursorLockMode.Confined;
-        //SceneManager.LoadScene("PruebaOrdenador");
+        GameController.Instance.isCameraFixed = true;
 
-        Camera.main.transform.rotation = new Quaternion(0, 0, 0, 0);
-        Camera.main.transform.position = camPos.position;
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+        cam.transform.position = camPos.position;
+        cam.transform.rotation = camPos.rotation;
+
         pantalla.SetActive(true);
     }
 
+    public override void ExitInteract()
+    {
+        GameController.Instance.isCameraFixed = false;
+
+        cam.transform.position = originalCamPos;
+        cam.transform.rotation = originalCamRot;
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
     public override void Resaltar()
     {
@@ -36,12 +51,4 @@ public class PcObject : InteractuableObject
     {
         GetComponent<Renderer>().material.SetFloat("_outliner_thickness", 0f);
     }
-
-    public override void ExitInteract()
-    {
-        GameController.Instance.isCameraFixed = false;
-        Camera.main.transform.position = originalCamPos;
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
 }

@@ -1,80 +1,83 @@
+using System.Collections;
 using System.Collections.Generic;
-using FMODUnity;
-using Microsoft.Unity.VisualStudio.Editor;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
+using FMODUnity;
 
 public class pajarillo_script : MonoBehaviour
 {
     public static pajarillo_script Instance;
+
+    [Header("Audio")]
     [SerializeField] private EventReference pajaroSound;
 
-    [SerializeField] List<GameObject> Pajarillos = new List<GameObject>();
+    [Header("States")]
+    [SerializeField] private List<BirdStateSO> states;
 
-    [SerializeField] GameObject Alarm;
-    [SerializeField] GameObject pantalla;
+    [Header("UI")]
+    [SerializeField] private GameObject bubbleUI;
+    [SerializeField] private Image bubbleImage;
+    [SerializeField] private TMP_Text bubbleText;
 
-    public int Pajaro_Stage;
+    [SerializeField] private Button okButton;
+    [SerializeField] private TMP_Text okButtonText;
 
-    void Start()
+    private BirdStateSO currentState;
+
+    void Awake()
     {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-
         Instance = this;
+        
+        okButton.onClick.AddListener(() => Debug.Log("CLICK OK FUNCIONA"));
+        okButton.onClick.AddListener(OnOkPressed);
 
-        Pajaro_Stage = 0;
+        bubbleUI.SetActive(false);
+        okButton.gameObject.SetActive(false);
+
+
     }
 
-    public void AlarmOn()
+    public void SetState(int index)
     {
-        if(!pantalla.activeSelf)
-        pantalla.SetActive(true);
-
-        if(pantalla.activeSelf)
-        {
-            pantalla.SetActive(true);
-            GameController.Instance.isCameraFixed = false;
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-        Alarm.SetActive(true);
+        if (index < 0 || index >= states.Count) return;
+        SetState(states[index]);
     }
-    
-    public void AlarmOff()
+
+    public void SetState(BirdStateSO state)
     {
-        Alarm.SetActive(false);
+        currentState = state;
+        ApplyState(state);
     }
 
-    public void UhOh()
+    void ApplyState(BirdStateSO state)
     {
-        Pajaro_Stage = 0;
+        bubbleUI.SetActive(true);
 
-        Cursor.lockState = CursorLockMode.Confined;
-        AudioManager.Instance.PlaySFX(pajaroSound, transform.position, "PajaroParameter", "Enfadado");
+        bubbleText.text = state.bubbleText;
+        bubbleImage.sprite = state.sprite;
+        okButtonText.text = state.buttonText;
 
-        Pajarillos[Pajaro_Stage].SetActive(true);
+        okButton.gameObject.SetActive(false);
+
+        AudioManager.Instance.PlaySFX(
+            pajaroSound,
+            transform.position,
+            "PajaroParameter",
+            state.fmodParameterValue
+        );
+
+        StartCoroutine(ShowButton());
     }
 
-    public void TestTwo()
+    IEnumerator ShowButton()
     {
-        Pajaro_Stage = 1;
-
-        Cursor.lockState = CursorLockMode.Confined;
-
-        Pajarillos[Pajaro_Stage].SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+        okButton.gameObject.SetActive(true);
     }
 
-        public void HideBird()
-        {
-
-            for(int i = 0; i < Pajarillos.Count; i++)
-            {
-                Debug.Log("Pajarillo " + i + " oculto");
-                Pajarillos[i].SetActive(false);
-            }
-
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+    void OnOkPressed()
+    {
+        bubbleUI.SetActive(false);
+    }
 }

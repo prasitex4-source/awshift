@@ -9,7 +9,10 @@ public class InteractuableControler : MonoBehaviour
     [SerializeField] TextMeshProUGUI interactText;
 
     Iinteractuable currentTargetInter;
-    IPulsable currentTargetButton; 
+    IPulsable currentTargetButton;
+
+    // 🔥 NUEVO: interacción activa real (NO depende del raycast)
+    Iinteractuable activeInteraction;
 
     void Update()
     {
@@ -25,26 +28,23 @@ public class InteractuableControler : MonoBehaviour
 
         if (hit.collider != null)
         {
-
             var interactuable = hit.collider.GetComponent<Iinteractuable>();
             if (interactuable != null)
             {
-
                 currentTargetButton = null;
                 currentTargetInter = interactuable;
                 return;
             }
 
-
             var pulsable = hit.collider.GetComponent<IPulsable>();
             if (pulsable != null)
             {
-
                 if (currentTargetInter != null)
                 {
                     currentTargetInter.QuitarResalte();
                     currentTargetInter = null;
                 }
+
                 currentTargetButton = pulsable;
                 return;
             }
@@ -55,6 +55,7 @@ public class InteractuableControler : MonoBehaviour
             currentTargetInter.QuitarResalte();
             currentTargetInter = null;
         }
+
         currentTargetButton = null;
     }
 
@@ -65,6 +66,10 @@ public class InteractuableControler : MonoBehaviour
             if (currentTargetInter != null)
             {
                 currentTargetInter.Interact();
+
+                // 🔥 GUARDAMOS INTERACCIÓN REAL
+                activeInteraction = currentTargetInter;
+
                 return;
             }
 
@@ -75,8 +80,12 @@ public class InteractuableControler : MonoBehaviour
         }
         else if (Keyboard.current[Key.Escape].wasPressedThisFrame)
         {
-            if (currentTargetInter != null)
-                currentTargetInter.ExitInteract();
+            // 🔥 ESC YA NO DEPENDE DEL RAYCAST
+            if (activeInteraction != null)
+            {
+                activeInteraction.ExitInteract();
+                activeInteraction = null;
+            }
         }
     }
 
