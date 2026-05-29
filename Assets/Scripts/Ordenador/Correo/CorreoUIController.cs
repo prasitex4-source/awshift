@@ -36,6 +36,7 @@ public class CorreoUIController : MonoBehaviour
 
     public void ShowSpam()
     {
+        Debug.Log("ShowSpam");
         papelera.SetActive(false);
         redactar.SetActive(false);
         inbox.SetActive(false);
