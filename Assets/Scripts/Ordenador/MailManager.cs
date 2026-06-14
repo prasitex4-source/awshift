@@ -49,4 +49,9 @@ public class MailManager : MonoBehaviour
         escritorio.SetActive(true);
 
     }
+
+    public void ReciebeMessage(GameObject message)
+    {
+        message.SetActive(true);
+    }
 }

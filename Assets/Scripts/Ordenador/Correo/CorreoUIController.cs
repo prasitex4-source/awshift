@@ -58,5 +58,10 @@ public class CorreoUIController : MonoBehaviour
         GetComponent<CanvasGroup>().interactable = true;
         GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
+
+    public void ReciebeMessage(GameObject message)
+    {
+        message.SetActive(true);
+    }
     
 }
