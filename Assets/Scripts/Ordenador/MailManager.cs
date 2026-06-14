@@ -50,8 +50,5 @@ public class MailManager : MonoBehaviour
 
     }
 
-    public void ReciebeMessage(GameObject message)
-    {
-        message.SetActive(true);
-    }
+
 }

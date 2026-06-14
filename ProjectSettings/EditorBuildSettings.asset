@@ -24,6 +24,9 @@ EditorBuildSettings:
     path: Assets/Scenes/BETA/Pajarillo_Test.unity
     guid: 91b8efd4e876ef1468726e5e47c67977
   - enabled: 1
+    path: Assets/Scenes/Intro.unity
+    guid: 37ed607103442da4582ac9420db22633
+  - enabled: 1
     path: Assets/Scenes/BETA/ProbandoCamara.unity
     guid: 7972829ad5fd642408cd5a0761dae14c
   m_configObjects:

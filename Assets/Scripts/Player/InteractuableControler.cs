@@ -11,7 +11,7 @@ public class InteractuableControler : MonoBehaviour
     Iinteractuable currentTargetInter;
     IPulsable currentTargetButton;
 
-    // 🔥 NUEVO: interacción activa real (NO depende del raycast)
+
     Iinteractuable activeInteraction;
 
     void Update()
@@ -67,7 +67,6 @@ public class InteractuableControler : MonoBehaviour
             {
                 currentTargetInter.Interact();
 
-                // 🔥 GUARDAMOS INTERACCIÓN REAL
                 activeInteraction = currentTargetInter;
 
                 return;
@@ -80,7 +79,7 @@ public class InteractuableControler : MonoBehaviour
         }
         else if (Keyboard.current[Key.Escape].wasPressedThisFrame)
         {
-            // 🔥 ESC YA NO DEPENDE DEL RAYCAST
+
             if (activeInteraction != null)
             {
                 activeInteraction.ExitInteract();
